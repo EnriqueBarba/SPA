@@ -17,17 +17,12 @@
   }
 }
 
-.wrapper {
-  display: flex;
-  width:100%;
-}
-
 .Navbar{
   width: 100%;
 }
 
 #sideMenu {
- max-width: 30%;
+ max-width: 45%;
  min-height: 100vh;
 }
 
@@ -47,3 +42,10 @@
   display: block;
 }
 
+.search-button {
+  width:2.5rem;
+  background-color: rgb(219, 157, 41);
+  border: 0;
+  border-radius: 0.2rem;
+  margin-left: 0.1rem;
+}
