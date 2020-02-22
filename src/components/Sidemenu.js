@@ -1,12 +1,20 @@
 import React from 'react'
+import { WithAuthConsumer } from '../context/AuthContext'
+import { Link } from 'react-router-dom'
 
-const Sidemenu = () => (
+const Sidemenu = ({currentUser}) => (
     <div className="Sidemenu collapse bg-dark p-2" id="sideMenu">
         <div className="bg-dark p-2 ">
-        <h4 className="text-white">Content</h4>
-        <span className="text-muted">Options</span>
+        {!currentUser && 
+            <h4>
+                <Link className='login-link' to="/login"> Log In </Link>
+            </h4>
+        }
+        {currentUser && 
+            <span className="text-muted"><Link to="/logout">Log Out</Link></span>
+        }
         </div>
     </div>
 )
 
-export default Sidemenu
+export default WithAuthConsumer(Sidemenu)

@@ -22,7 +22,7 @@
 }
 
 #sideMenu {
- max-width: 45%;
+ width: 35vw;
  min-height: 100vh;
 }
 
@@ -37,6 +37,11 @@
   position: absolute;
 }
 
+.Sidemenu .login-link {
+  color: white;
+  text-decoration: none;
+}
+
 .Dashboard {
   padding: 1rem;
   display: block;
@@ -48,4 +53,28 @@
   border: 0;
   border-radius: 0.2rem;
   margin-left: 0.1rem;
+}
+
+.Products{
+  list-style: none;
+  padding: 0;
+}
+
+.Product {
+  box-shadow: 0 0 10px 0 rgba(85, 85, 85,0.2);
+}
+
+.Product a{
+  color: rgba(34, 33, 33, 0.805);
+  text-decoration: none;
+}
+
+.Product label,span{
+  font-size: 2rem;
+  
+}
+
+.Product img{
+  max-width: 100vw;
+  max-height: 30vh;
 }

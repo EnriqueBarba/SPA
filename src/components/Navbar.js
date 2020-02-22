@@ -1,4 +1,5 @@
 import React from 'react'
+import SearchBar from './SearchBar'
 
 const Navbar = () => {
 return (
@@ -11,12 +12,7 @@ return (
         aria-expanded="false" >
       <span className="navbar-toggler-icon"></span>
     </button>
-    <form className="search-bar" action="" method="get" role="search">              {/*LLEVAR A UN COMPONENTE ESPECIFICO*/}
-      <div className="d-flex"> 
-        <input className="form-control" type="text" placeholder="Search..." />
-        <button className="search-button" type="submit" value=""><i className="fa fa-search"></i></button>
-      </div>
-    </form>
+    <SearchBar />
   </nav>
 </div>
 )}
