@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Sidemenu from './components/Sidemenu';
-import Dashboard from './Dashboard';
+import Navbar from './components/misc/Navbar';
+import Sidemenu from './components/misc/Sidemenu';
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (

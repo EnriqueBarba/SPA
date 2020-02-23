@@ -14,29 +14,29 @@ const catcher = async fn => {
     }
   }
 
-const login = (obj) => http.post("/login",obj).then(data => data)
-const logout = () => http.post("/logout").then(data => data)
-const register = (data) => http.post('/register', data).then(data => data)
+const login = obj => catcher(() => http.post("/login",obj))
+const logout = _ => catcher(() => http.post("/logout"))
 
-const updateProfile = (obj) => http.patch('/profile', obj).then(data => data) 
-const searchByCat = (cat) => http.get(`/search/${cat}`).then(data => data)
+const register = data => catcher(() => http.post('/register', data))
+const updateProfile = obj => catcher(()=>http.patch('/profile', obj)) 
+const searchByCat = cat => catcher(() => http.get(`/search/${cat}`))
 
 const getProducts = _ => catcher(() => http.get('/products'))
-const getSingleProduct = (id) => http.get(`/product/${id}`).then(data => data)
-const newProduct = (obj) => http.post('/product/new', obj).then(data => data)
-const updateProduct = (obj) => http.post('/product/update', obj).then(data => data)
-const deleteProduct = () => http.delete('/product/delete').then(data => data)
+const getSingleProduct = flag => catcher(() => http.get(`/product/${flag}`))
+const newProduct = obj => catcher(() => http.post('/product/new', obj))
+const updateProduct = obj => catcher(() => http.post('/product/update', obj))
+const deleteProduct = _ => catcher(() => http.delete('/product/delete'))
 
 const getOrders = _ => catcher(() => http.get('/orders'))
-const getOrder = (id) => http.get(`/order/${id}`).then(data => data)
-const createOrder = (obj) => http.post('/order/new', obj).then(data => data)
-const updateOrder = (obj) => http.patch('/order/update', obj).then(data => data)
-const purchase = (obj) => http.post('/order/purchase',obj).then(data => data)
+const getOrder = id => catcher(() => http.get(`/order/${id}`))
+const createOrder = obj => http.post('/order/new', obj).then(res => res.data)
+const updateOrder = obj => catcher(() => http.patch('/order/update', obj))
+const purchase = obj => catcher(() => http.post('/order/purchase',obj))
 
-const getCart = () => http.get('/cart').then(data => data)
-const addToCart = (obj) => http.post('/cart/add', obj).then(data => data)
-const updateCart = (obj) => http.patch('/cart/update', obj).then(data => data)
-const purchaseCart = (obj) => http.post('/cart/purchase',obj).then(data => data)
+const getCart = _ => catcher(() => http.get('/cart'))
+const addToCart = obj => http.post('/cart/add', obj).then(res => res.data)
+const updateCart = obj => catcher(() =>http.patch('/cart/update', obj))
+const purchaseCart = obj => catcher(() =>http.post('/cart/purchase',obj))
 
 
 export const apiList = {
@@ -48,7 +48,6 @@ export const apiDetails = {
     [PRODUCTS_KEY] : getSingleProduct,
     [ORDERS_KEY]: getOrder
 }
-
 
 
 export {login}

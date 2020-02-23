@@ -1,5 +1,5 @@
 import React, { createContext } from 'react'
-import { logout } from '../services/ApiService';
+import { logout as serviceLogout } from '../services/ApiService';
 
 const AuthContext = createContext();
 
@@ -15,7 +15,7 @@ export class AuthContextProvider extends React.Component {
     }
 
     logout = () => {
-        logout().then( () => this.setUser() )
+        serviceLogout().then( () => this.setUser() )
     }
 
     render() {
