@@ -17,8 +17,9 @@ const catcher = async fn => {
 const login = obj => catcher(() => http.post("/login",obj))
 const logout = _ => catcher(() => http.post("/logout"))
 
-const register = data => catcher(() => http.post('/register', data))
-const updateProfile = obj => catcher(()=>http.patch('/profile', obj)) 
+const register = data => http.post('/register', data).then(res => res.data)
+const updateProfile = obj => http.post('/profile', obj).then(res => res.data)
+
 const searchByCat = cat => catcher(() => http.get(`/search/${cat}`))
 
 const getProducts = _ => catcher(() => http.get('/products'))
