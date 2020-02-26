@@ -74,6 +74,7 @@ class UserForm extends React.Component {
                 data:{
                     id: user.id,
                     fullName: user.fullName,
+                    password: '',
                     email: user.email,
                     country: user.address.country,
                     postalCode: user.address.postalCode,
@@ -102,6 +103,7 @@ class UserForm extends React.Component {
     handleBlur = (e) => {
         this.setState({ 
             touch: { 
+                ...this.state.touch,
                 [e.target.name]: true 
             }
         })
@@ -134,7 +136,6 @@ class UserForm extends React.Component {
             redirect:true
         })
 
-        console.info('submit')
     }
     
     render() {

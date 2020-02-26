@@ -1,5 +1,5 @@
 import React from 'react'
-import { createOrder, addToCart } from '../services/ApiService';
+import { createOrder, addToCart } from '../../services/ApiService';
 import { Redirect } from 'react-router-dom';
 
 class BuyProduct extends React.Component{

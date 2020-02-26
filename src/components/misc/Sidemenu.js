@@ -14,7 +14,7 @@ const Sidemenu = ({currentUser, logout}) => (
         {currentUser && 
             <ul>
                 <li><Link className='login-link' to="/profile"> Profile </Link></li>
-                <li><Link className='login-link' to="/product/new"> Add Product </Link></li>
+                <li><Link className='login-link' to="/new/product"> Add Product </Link></li>
                 <li className="text-muted" onClick={logout}>Log Out</li>
             </ul>
         }

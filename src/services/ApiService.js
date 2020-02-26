@@ -24,8 +24,8 @@ const searchByCat = cat => catcher(() => http.get(`/search/${cat}`))
 
 const getProducts = _ => catcher(() => http.get('/products'))
 const getSingleProduct = flag => catcher(() => http.get(`/product/${flag}`))
-const newProduct = obj => catcher(() => http.post('/product/new', obj))
-const updateProduct = obj => catcher(() => http.post('/product/update', obj))
+const newProduct = obj => http.post('/product/new', obj).then(res => res.data)
+const updateProduct = obj => http.post('/product/update', obj).then(res => res.data)
 const deleteProduct = _ => catcher(() => http.delete('/product/delete'))
 
 const getOrders = _ => catcher(() => http.get('/orders'))

@@ -5,6 +5,7 @@ import Login from './Login'
 import ProductDetails from '../ui/ProductDetails'
 import UserForm from './UserForm'
 import { WithAuthConsumer } from '../context/AuthContext'
+import ProductForm from './Product/ProductForm'
 
 const Dashboard = ({currentUser}) => {
     return (
@@ -21,8 +22,8 @@ const Dashboard = ({currentUser}) => {
                 {currentUser && 
                     <>
                         <Route exact path="/profile" component={UserForm}/>
-                        <Route exact path="/product/new" />
-                        <Route exact path="/product/update" /> 
+                        <Route exact path="/new/product" component={ProductForm}/>
+                        <Route exact path="/update/product/:flag" component={ProductForm}/> 
                         <Route exact path="/confirm/:id" /> 
                     </>
                 }
