@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react'
 import { apiList } from '../services/ApiService'
 
 
-export const withContainer = (type, WrappedComponent) => {
+export const WithContainer = (type, WrappedComponent) => {
   return class extends Component {
     state = {
       list: []

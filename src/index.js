@@ -8,11 +8,14 @@ import './App.css';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
+import { CartContextProvider } from './context/CartContext';
 
 ReactDOM.render(
     <Router>
         <AuthContextProvider>
-            <App />
+            <CartContextProvider>
+                <App />
+            </CartContextProvider>
         </AuthContextProvider>
     </Router>, 
 document.getElementById('root'));

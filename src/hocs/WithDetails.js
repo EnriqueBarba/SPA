@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from 'react'
 import { apiDetails } from '../services/ApiService'
 
-export const withDetails = (type, WrappedComponent) => {
+export const WithDetails = (type, WrappedComponent) => {
   return class extends Component {
     state = {
       details: {}

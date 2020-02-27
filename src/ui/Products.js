@@ -1,6 +1,6 @@
 import React from 'react'
 import {PRODUCTS_KEY} from '../services/constants'
-import {withContainer} from '../hocs/withContainer'
+import {WithContainer} from '../hocs/WithContainer'
 import { Link } from 'react-router-dom'
 
 const Products = ({list}) => 
@@ -22,4 +22,4 @@ const Products = ({list}) =>
     </ul>
 
 
-export default withContainer(PRODUCTS_KEY, Products)
+export default WithContainer(PRODUCTS_KEY, Products)

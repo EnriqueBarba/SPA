@@ -2,6 +2,7 @@ import React from 'react'
 import { login } from '../services/ApiService';
 import { WithAuthConsumer } from '../context/AuthContext';
 import { Redirect } from 'react-router-dom';
+import { WithCartConsumer } from '../context/CartContext';
 
 class Login extends React.Component {
 
@@ -31,6 +32,8 @@ class Login extends React.Component {
             .then(user =>{
                 this.setState({auth:true})
                 this.props.setUser(user)
+                console.log(this.props)
+                this.props.getCart()
             })
             .catch(console.error)
         
@@ -62,4 +65,4 @@ class Login extends React.Component {
     }
 }
 
-export default WithAuthConsumer(Login)
+export default WithCartConsumer(WithAuthConsumer(Login))

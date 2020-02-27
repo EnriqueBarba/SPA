@@ -1,5 +1,5 @@
 import React from 'react'
-import { withDetails } from '../hocs/withDetails'
+import { WithDetails } from '../hocs/WithDetails'
 import {PRODUCTS_KEY} from '../services/constants'
 import BuyProduct from '../components/Product/BuyProduct'
 import { WithAuthConsumer } from '../context/AuthContext'
@@ -18,4 +18,4 @@ const ProductDetails = ({name = '', images = [], description = '', price=0, ammo
     </div>
   </div>
 
-export default withDetails(PRODUCTS_KEY, WithAuthConsumer(ProductDetails))
+export default WithDetails(PRODUCTS_KEY, WithAuthConsumer(ProductDetails))

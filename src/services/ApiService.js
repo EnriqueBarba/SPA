@@ -34,9 +34,9 @@ const createOrder = obj => http.post('/order/new', obj).then(res => res.data)
 const updateOrder = obj => catcher(() => http.patch('/order/update', obj))
 const purchase = obj => catcher(() => http.post('/order/purchase',obj))
 
-const getCart = _ => catcher(() => http.get('/cart'))
+const getCart = _ => http.get('/cart').then(res => res.data)
 const addToCart = obj => http.post('/cart/add', obj).then(res => res.data)
-const updateCart = obj => catcher(() =>http.patch('/cart/update', obj))
+const updateCart = obj => http.patch('/cart/update', obj).then(res => res.data)
 const purchaseCart = obj => catcher(() =>http.post('/cart/purchase',obj))
 
 
