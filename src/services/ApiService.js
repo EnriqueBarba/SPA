@@ -32,12 +32,12 @@ const getOrders = _ => catcher(() => http.get('/orders'))
 const getOrder = id => catcher(() => http.get(`/order/${id}`))
 const createOrder = obj => http.post('/order/new', obj).then(res => res.data)
 const updateOrder = obj => catcher(() => http.patch('/order/update', obj))
-const purchase = obj => catcher(() => http.post('/order/purchase',obj))
+const purchase = obj => http.post('/order/purchase',obj).then(res => res.data)
 
 const getCart = _ => http.get('/cart').then(res => res.data)
 const addToCart = obj => http.post('/cart/add', obj).then(res => res.data)
 const updateCart = obj => http.patch('/cart/update', obj).then(res => res.data)
-const purchaseCart = obj => catcher(() =>http.post('/cart/purchase',obj))
+const purchaseCart = obj => http.post('/cart/purchase',obj).then(res => res.data)
 
 
 export const apiList = {

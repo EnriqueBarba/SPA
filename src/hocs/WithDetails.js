@@ -1,4 +1,3 @@
-
 import React, { Component, Fragment } from 'react'
 import { apiDetails } from '../services/ApiService'
 

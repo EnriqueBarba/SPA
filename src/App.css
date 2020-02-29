@@ -104,3 +104,15 @@
 .item-info {
   padding: 1rem 0;
 }
+
+.Cart ul {
+  list-style:none;
+}
+
+.Order {
+  padding: 1rem;
+}
+
+.Order img {
+  height: 25%;
+}

@@ -7,6 +7,7 @@ import UserForm from './UserForm'
 import { WithAuthConsumer } from '../context/AuthContext'
 import ProductForm from './Product/ProductForm'
 import Cart from './Cart'
+import ConfirmPurchase from './Purchase/ConfirmPurchase'
 
 const Dashboard = ({currentUser}) => {
     return (
@@ -26,7 +27,7 @@ const Dashboard = ({currentUser}) => {
                         <Route exact path="/new/product" component={ProductForm}/>
                         <Route exact path="/update/product/:flag" component={ProductForm}/> 
                         <Route exact path="/cart" component={Cart}/> 
-                        <Route exact path="/confirm/:id" /> {/*darle una vuelta*/}
+                        <Route exact path="/confirm/:id" component={ConfirmPurchase}/> 
                     </>
                 }
             </Switch>
