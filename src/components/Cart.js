@@ -1,10 +1,11 @@
 import React from 'react'
 import { WithCartConsumer } from '../context/CartContext'
 import OrderDetails from '../ui/OrderDetails'
+import { Link } from 'react-router-dom'
 
-const Cart = ({cart, getCart}) => {
+const Cart = ({cart, getCart, updateOrder}) => {
 
-    if (Object.entries(cart).length === 0) {
+    if (Object.keys(cart).length === 0) {
         getCart()
     }
 
@@ -13,11 +14,13 @@ const Cart = ({cart, getCart}) => {
     return (
         <div className='Cart container'>
             <h4>You have {items} items in your cart</h4>
-            <button>Buy All</button>
-            <ul className='col-sm-12'>
-                {orders.map((e,i) => <li className='col-sm-12 mb-2' key={i}><OrderDetails order={e}/></li>)}
+            <Link className="btn btn-light function-btn" to={`/confirm/cart/${cart.id}`}>Buy All</Link>
+            <ul className=''>
+                {orders.map((e,i) => <li className='col-sm-12 col-md-6 col-xl-3 mb-2' key={i}><OrderDetails order={e} remove={updateOrder}/></li>)}
             </ul>
-            <button>Buy All</button>
+            {orders.length > 10 && 
+                <Link className="btn btn-light function-btn" to={`/confirm/cart/${cart.id}`}>Buy All</Link>
+            }
         </div>
     )
 

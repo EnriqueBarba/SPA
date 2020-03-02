@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {PRODUCTS_KEY, ORDERS_KEY} from './constants'
+import {PRODUCTS_KEY, ORDERS_KEY, CAT_KEY, PRODUCT_NAME} from './constants'
 
 const http = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
@@ -14,13 +14,14 @@ const catcher = async fn => {
     }
   }
 
-const login = obj => catcher(() => http.post("/login",obj))
+const login = obj => http.post("/login",obj).then(res => res.data)
 const logout = _ => catcher(() => http.post("/logout"))
 
 const register = data => http.post('/register', data).then(res => res.data)
 const updateProfile = obj => http.post('/profile', obj).then(res => res.data)
 
 const searchByCat = cat => catcher(() => http.get(`/search/${cat}`))
+const searchByName = search => catcher(() => http.get(`/products/${search}`))
 
 const getProducts = _ => catcher(() => http.get('/products'))
 const getSingleProduct = flag => catcher(() => http.get(`/product/${flag}`))
@@ -36,13 +37,15 @@ const purchase = obj => http.post('/order/purchase',obj).then(res => res.data)
 
 const getCart = _ => http.get('/cart').then(res => res.data)
 const addToCart = obj => http.post('/cart/add', obj).then(res => res.data)
-const updateCart = obj => http.patch('/cart/update', obj).then(res => res.data)
+const updateCart = orderId => http.patch('/cart/update', orderId).then(res => res.data)
 const purchaseCart = obj => http.post('/cart/purchase',obj).then(res => res.data)
 
 
 export const apiList = {
     [PRODUCTS_KEY]: getProducts,
-    [ORDERS_KEY]: getOrders
+    [ORDERS_KEY]: getOrders,
+    [CAT_KEY]: searchByCat,
+    [PRODUCT_NAME]: searchByName
 }
 
 export const apiDetails = {

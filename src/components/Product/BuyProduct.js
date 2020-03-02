@@ -74,7 +74,7 @@ class BuyProduct extends React.Component{
         const {quantity, error, order, addedToCart} = this.state;
 
         if (order) {
-            return <Redirect to={`/confirm/${order}`} />
+            return <Redirect to={`/confirm/order/${order}`} />
         }
 
         return (

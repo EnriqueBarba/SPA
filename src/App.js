@@ -1,14 +1,12 @@
 import React from 'react';
-import Navbar from './components/misc/Navbar';
-import Sidemenu from './components/misc/Sidemenu';
+import MyNavbar from './components/misc/MyNavbar';
 import Dashboard from './components/Dashboard';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <MyNavbar />
       <div className="wrapper">
-        <Sidemenu />
         <Dashboard />
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OrderDetails = ({order}) => {
+const OrderDetails = ({order, remove}) => {
     return(
         <div className='Order card'>
             <img className='card-img-top' src={order.product.images[0]} alt="Product" />
@@ -12,8 +12,7 @@ const OrderDetails = ({order}) => {
                 </p>
             </div>
             <div>
-                <button>edit</button>
-                <button>remove</button>
+                <button className='btn btn-light function-btn' onClick={() => remove({orderId:order.id})}>Remove</button>
             </div>
         </div>
     )

@@ -67,7 +67,7 @@ class ProductForm extends React.Component {
                     price: prod.price,
                     stock: prod.totalAmmount,
                     ammountLeft: prod.ammountLeft,
-                    categories: prod.categories[0].split(','),
+                    categories: prod.categories[0] ? prod.categories[0].split(',') : [],
                     description: prod.description
                 },
                 error: {

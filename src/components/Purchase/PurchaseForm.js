@@ -2,10 +2,12 @@ import React, {Component} from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import { Redirect } from 'react-router-dom'
 import { purchase as Purchase} from '../../services/ApiService';
+import { WithCartConsumer } from '../../context/CartContext';
 
 class CheckoutForm extends Component {
   state = {
-      order: '',
+      id: '',
+      item: '',
       completedPay : false
   }
 
@@ -13,82 +15,80 @@ class CheckoutForm extends Component {
     e.preventDefault();
     if (this.props.stripe) {
         this.props.stripe.createToken()
-        .then(({token}) => {
-          if(token){
-              
-            const data = {
-                order: this.state.order,
-                stripeToken: token.id
-            }
+        .then( ({token}) => {
+          if (token){
+            
+            if (this.state.item === 'order') {
+              const data = {
+                  order: this.state.id,
+                  stripeToken: token.id
+              }
 
-            Purchase(data)
+              Purchase(data)
                 .then(payment => {
                     console.info('Payment', payment)
+                    this.setState({
+                      completedPay : true
+                    })
                 })
+            } else if (this.state.item === 'cart') {
+              const data = {
+                stripeToken: token.id
+              }
 
-            /*
-            PaymentService.paymentOrder(table.orderId, data)
-            const cleanTable = {
-              ...this.state.table,
-              orders : [],
-              orderId : '',
-              payStatus : 'payed'
+              this.props.purchaseCart(data)
+
+              this.setState({
+                completedPay : true
+              })
+
             }
-            TableService.cleanTable(cleanTable)
-            */
-            this.setState({
-              completedPay : true
-            })
           }
         })
       }
   }
 
   componentDidMount = () => {
-   /* this.tableSubscription = TableService.onTableChange().subscribe(table =>
-      this.setState({ table: table}))
-      */
-     const orderId =  this.props.match.params.id
-     this.setState({
-         ...this.state,
-         order: orderId
-     })
-
-     //purchase()
-
-    };
-
-  componentWillUnmount() {
-    //this.tableSubscription.unsubscribe();
-  }
+    const item = this.props.match.params.item
+    const itemId =  this.props.match.params.id
+    this.setState({
+        ...this.state,
+        id: itemId,
+        item: item
+    })
+  };
 
   render() {
-    if(!this.state.completedPay){
+    if (!this.state.completedPay){
 
       return (
-        <div className="checkout">
+        <div className="container">
           <p>Please, fill the payment details:</p>
-          <CardElement style={{
-              base: {
-                  iconColor: 'rgb(219, 157, 41)',
-                  color: '#6c757d',
-                  lineHeight: '40px',
-                  fontWeight: 400,
-                  fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                  fontSize: '16px',
-                  '::placeholder': {
-                      color: 'rgb(219, 157, 41)',
-                  }
-              }
-          }} />
-          <button color='btn btn-pink-color-white' text='Pagar' width='w-100' onClick={this.handleSubmit}>Confirm & Purchase</button>
+          <div className='col'>
+            <CardElement style={{
+                base: {
+                    iconColor: 'rgb(219, 157, 41)',
+                    color: '#6c757d',
+                    lineHeight: '40px',
+                    fontWeight: 400,
+                    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                    fontSize: '16px',
+                    '::placeholder': {
+                        color: 'rgb(219, 157, 41)',
+                    }
+                }
+            }} />
+          </div>
+          <button className='btn btn-light function-btn' text='Pagar' width='w-100' onClick={this.handleSubmit}>Confirm & Purchase</button>
         </div>
       );
     }
+
     return (
-    <Redirect to='/'/>
+      <Redirect to='/'/>
     );
   }
 }
 
-export default injectStripe(CheckoutForm);
+
+export default WithCartConsumer(injectStripe(CheckoutForm))

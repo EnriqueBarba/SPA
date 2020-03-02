@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 class SearchBar extends React.Component  {
     state= {
@@ -11,20 +13,15 @@ class SearchBar extends React.Component  {
         })
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("llamada") //TODO
-    }
-
     render() {
-        
+
         return (
-            <form className="search-bar" action="" onSubmit={this.handleSubmit} method="get" role="search">
+            <div className="search-bar" role="search">
                 <div className="d-flex"> 
                 <input className="form-control" type="text" name="search" placeholder="Search..." onChange={this.handleChange} value={this.state.search} />
-                <button className="search-button" type="submit" value=""><i className="fa fa-search"></i></button>
+                <Link to={`/products/search/${this.state.search}`} replace={true} className="search-button" type="submit" value=""><i className="fa fa-search"></i></Link>
                 </div>
-            </form>
+            </div>
         )
     }
 }

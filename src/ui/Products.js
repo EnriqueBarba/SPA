@@ -8,7 +8,7 @@ const Products = ({list}) =>
         { 
         list.map((prod,i) => 
             <li className='Product mb-2' key={i}>
-                <Link to={`/product/${prod.flag}`}>
+                <Link to={`/product/details/${prod.flag}`}>
                     <h2>{prod.name}</h2>
                     <img src={prod.images[0]} alt='Product'/>
                     <p>

@@ -17,39 +17,10 @@
   }
 }
 
-.Navbar{
-  width: 100%;
-}
-
-#sideMenu {
- width: 35vw;
- min-height: 100vh;
-}
-
-#sideMenu.collapsing {
-  -webkit-transition: none;
-  transition: none;
-  display: none;
-}
-
-#sideMenu.collapse.show {
-  display: block;
-  position: absolute;
-}
-
-.Sidemenu .login-link {
+.MyNavBar .link {
   color: white;
   text-decoration: none;
   font-size: 1.1rem;
-}
-
-.Sidemenu ul {
-  list-style: none;
-  padding:0;
-}
-
-.Sidemenu li {
-  margin-bottom: 0.5rem;
 }
 
 .Dashboard {
@@ -57,7 +28,9 @@
   display: block;
 }
 
-.search-button {
+.search-bar .search-button {
+  padding: 0.25rem;
+  color: rgba(34, 33, 33, 0.805);
   width:2.5rem;
   background-color: rgb(219, 157, 41);
   border: 0;
@@ -115,4 +88,28 @@
 
 .Order img {
   height: 25%;
+}
+
+.CategorySerach {
+  border: 1px solid rgba(85, 85, 85,0.2);
+} 
+
+.CategorySerach h3 {
+  margin: 1rem 0;
+}
+
+.CategorySerach a {
+  text-decoration: none;
+}
+
+.CategorySerach .carousel-inner {
+  background: #9a9da0;
+}
+.CategorySerach .carousel.slide a.carousel-control-prev, a.carousel-control-next {
+  background-color: #343a40;
+  opacity: 0.9;
+}
+
+.CategorySerach .carousel-indicators {
+  display: none;
 }

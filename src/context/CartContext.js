@@ -1,5 +1,5 @@
 import React, { createContext } from 'react'
-import { addToCart, updateCart, getCart } from '../services/ApiService';
+import { addToCart, updateCart, getCart, purchaseCart } from '../services/ApiService';
 
 const CartContext = createContext();
 
@@ -23,9 +23,12 @@ export class CartContextProvider extends React.Component {
         addToCart(obj).then( c => this.setCart(c) )
     }
 
-    
-    updateOrder = (obj) => {
-        updateCart(obj).then( c => this.setCart(c) )
+    updateOrder = (orderId) => {
+        updateCart(orderId).then( c => this.setCart(c) )
+    }
+
+    purchaseCart = (obj) => {
+        purchaseCart(obj).then( c => this.setCart(c) ) 
     }
 
     render() {
@@ -33,7 +36,8 @@ export class CartContextProvider extends React.Component {
             cart: this.state.cart,
             getCart: this.getCart,
             addOrder: this.addOrder,
-            updateOrder: this.updateOrder
+            updateOrder: this.updateOrder,
+            purchaseCart: this.purchaseCart
           }
         return(
             <CartContext.Provider value={value}>
