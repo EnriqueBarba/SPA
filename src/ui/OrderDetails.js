@@ -1,21 +1,26 @@
 import React from 'react'
+import { Card } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
+import { WithCartConsumer } from '../context/CartContext'
 
-const OrderDetails = ({order, remove}) => {
+const OrderDetails = ({order, updateOrder}) => {
     return(
-        <div className='Order card'>
-            <img className='card-img-top' src={order.product.images[0]} alt="Product" />
-            <div className='card-body'>
-                <h5 className='card-title'>{order.product.name}</h5>
-                <p className='card-text'>
-                    Items: {order.ammount} - Price: {order.buyingPrice}€<br/>
-                    Total price: {order.ammount * order.buyingPrice}€
-                </p>
+
+        <Card className='Cart-order card'>
+            <div className="image-order">
+               <Card.Img variant="top" src={order.product.images[0]} alt="Product" />
             </div>
-            <div>
-                <button className='btn btn-light function-btn' onClick={() => remove({orderId:order.id})}>Remove</button>
-            </div>
-        </div>
+            <Card.Body >
+            <Card.Title>{order.product.name}</Card.Title>
+                <Card.Text className='card-text'>
+                    Unidades: {order.ammount} - Precio: {order.buyingPrice}€<br/>
+                    Precio total: {order.ammount * order.buyingPrice}€
+                </Card.Text>
+            </Card.Body>
+            <Button className="btn btn-light function-btn" onClick={()=>updateOrder({orderId:order.id})}>Eliminar </Button>
+        </Card>
+
     )
 }
 
-export default OrderDetails
+export default WithCartConsumer(OrderDetails)

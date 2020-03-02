@@ -1,5 +1,5 @@
 import React, { createContext } from 'react'
-import { addToCart, updateCart, getCart, purchaseCart } from '../services/ApiService';
+import { addToCart, updateCart, getCart as refreshCart, purchaseCart } from '../services/ApiService';
 
 const CartContext = createContext();
 
@@ -9,12 +9,12 @@ export class CartContextProvider extends React.Component {
         cart:{}
     }
 
-    setCart(c) {
-        this.setState({cart: c})
+    setCart(cart) {
+        this.setState({cart})
     }
 
     getCart = () => {
-        getCart().then(c => {
+        refreshCart().then(c => {
             this.setCart(c)
         })
     }
@@ -24,7 +24,9 @@ export class CartContextProvider extends React.Component {
     }
 
     updateOrder = (orderId) => {
-        updateCart(orderId).then( c => this.setCart(c) )
+        updateCart(orderId).then( c => { 
+            this.setCart(c) 
+        })
     }
 
     purchaseCart = (obj) => {

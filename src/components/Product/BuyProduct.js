@@ -78,23 +78,25 @@ class BuyProduct extends React.Component{
         }
 
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className="Buy-product" onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     { addedToCart &&  
                         <div className="Success feedback">
-                            Successfully added to cart
+                            Añadido correctamente!
                         </div>
                     }
                     <input type='number' value={quantity} onChange={this.handleChange} min={1} name='quantity'/>
                     { error &&  
                         <div className="Error feedback">
-                            Ops something went wrong
+                            Ops algo ha ido mal...
                         </div>
                     }
                 </div>
                 <div className="d-flex justify-content-around">
-                    <input className="btn btn-light function-btn" id="doBuy" name="doBuy" type="submit" value='Buy now' onClick={this.handleClick}/>
-                    <input className="btn btn-light function-btn" id="doCart" name="doCart" type="submit" value='Add to Cart' onClick={this.handleClick}/>
+                    <input className="btn btn-light function-btn" id="doBuy" 
+                        name="doBuy" type="submit" value='Comprar ya' onClick={this.handleClick}/>
+                    <input className="btn btn-light function-btn" id="doCart" 
+                        name="doCart" type="submit" value='Añadir a la cesta' onClick={this.handleClick}/>
                 </div>
             </form>
         )

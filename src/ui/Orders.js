@@ -1,29 +1,37 @@
 import React from 'react'
-import {ORDERS_KEY} from '../services/constants'
-import {WithContainer} from '../hocs/WithContainer'
+import { ORDERS_KEY } from '../services/constants'
+import { WithContainer } from '../hocs/WithContainer'
 import { Link } from 'react-router-dom'
+import { CardDeck, Card } from 'react-bootstrap'
 
-const Orders = ({list}) => 
+const Orders = ({ list }) =>
     <>
-    <h2>Orders:</h2>
-    <ul className='Orders'>
-        { 
-        list.map((order,i) => 
-            <li className='Product mb-2' key={i}>
-                <Link to={`/order/${order.id}`}>
-                    <h2>{order.product.name}</h2>
-                    <img src={order.product.images[0]} alt='Product'/>
-                    <p>
-                        <label>Price:</label>   
-                        <span> {order.buyingPrice}€</span><br/>
-                        <label>Units:</label>   
-                        <span> {order.ammount}</span>
-                    </p>
+        <h2>Pedidos:</h2>
+        <CardDeck className="Orders row flex-column">
+            {
+                list.map((order, i) =>
+                <Link key={i} to={`/order/${order.id}`}>
+                    <Card className='Order row flex-row' >
+                        <Card.Title className="col-12">{order.product.name}</Card.Title>
+                        <div className="image-order justify-content-around d-flex">
+                            <Card.Img src={order.product.images[0]} alt='Order' />
+                        </div>
+                        <Card.Body className="">
+                            <Card.Text className="text-muted">{order.createdAt}</Card.Text>
+                            <Card.Text>
+                                Precio: {order.buyingPrice}€<br />
+                                Unidades: {order.ammount}<br />
+                            </Card.Text>
+                            <Card.Footer>
+                                {order.payment && order.payment.paid && <>Pagado</>}
+                                {(!order.payment || !order.payment.paid) && <>Sin pagar</>}
+                            </Card.Footer>
+                        </Card.Body>
+                    </Card>
                 </Link>
-            </li>
-        )
-        }
-    </ul>
+                )
+            }
+        </CardDeck>
     </>
 
 export default WithContainer(ORDERS_KEY, Orders)

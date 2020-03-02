@@ -67,7 +67,7 @@ class ProductForm extends React.Component {
                     price: prod.price,
                     stock: prod.totalAmmount,
                     ammountLeft: prod.ammountLeft,
-                    categories: prod.categories[0] ? prod.categories[0].split(',') : [],
+                    categories: prod.categories ? prod.categories.map(e => e) : [],
                     description: prod.description
                 },
                 error: {
@@ -185,17 +185,20 @@ class ProductForm extends React.Component {
         }
 
         return(
+            <>
+            {this.state.isEdit && <h3>Editar Producto</h3>}
+            {!this.state.isEdit && <h3>Subir Producto</h3>}
             <form onSubmit={this.handleSubmit} encType="multipart/form-data">
                 <div className="form-group row mb-2">
-                    <label className="" htmlFor='name'>Product Name: </label>
+                    <label className="" htmlFor='name'>Nombre del producto: </label>
                     <input className="form-control" 
                     type='text' name='name' id='name' 
                     value={data.name} onChange={this.handleChange} onBlur={this.handleBlur}/>
                 </div>
                 <div className="form-group row mb-2">
-                    <label className="" htmlFor='image'>Images: </label>
+                    <label className="" htmlFor='image'>Imagenes: </label>
                     <div className="custom-file">
-                        <label className="custom-file-label" htmlFor="image">Attach</label>
+                        <label className="custom-file-label" htmlFor="image">Adjuntar</label>
                         <input className="custom-file-input" 
                             type='file' multiple="multiple" 
                             name='image' id='image' 
@@ -203,7 +206,7 @@ class ProductForm extends React.Component {
                     </div>
                 </div>
                 <div className="form-group row mb-2">
-                    <label className="" htmlFor='price'>Price: </label>
+                    <label className="" htmlFor='price'>Precio: </label>
                     <input className="form-control" 
                     type='number' name='price' id='price' 
                     value={data.price} onChange={this.handleChange} onBlur={this.handleBlur}/>
@@ -216,21 +219,21 @@ class ProductForm extends React.Component {
                 </div>
                 {this.state.isEdit &&
                 <div className="form-group row mb-2">
-                    <label className="" htmlFor='ammountLeft'>Units left: </label>
+                    <label className="" htmlFor='ammountLeft'>Unidades restantes: </label>
                     <input className="form-control" 
                     type='number' name='ammountLeft' id='ammountLeft' 
                     value={data.ammountLeft} onChange={this.handleChange} onBlur={this.handleBlur}/>
                 </div>
                 }
                 <div className="form-group row mb-2">
-                    <label className="" htmlFor='categories'>Categories: </label>
+                    <label className="" htmlFor='categories'>Categorias: </label>
                     <select className="custom-select" multiple="multiple" name='categories' id='categories' 
                     onChange={this.handleSelect} onBlur={this.handleBlur} value={data.categories}>
                         {CATEGORIES.map((e,i) => <option key={i} value={e}>{e}</option>)}
                     </select>
                 </div>
                 <div className="form-group row mb-2">
-                    <label className="" htmlFor='description'>Description: </label>
+                    <label className="" htmlFor='description'>Descripcion: </label>
                     <textarea className="form-control"
                     rows="3" name='description' id='description' 
                     value={data.description} onChange={this.handleChange} onBlur={this.handleBlur}>    
@@ -238,13 +241,14 @@ class ProductForm extends React.Component {
                 </div>
                 <div>
                 {this.state.isEdit &&
-                    <button className="btn btn-secondary" type="submit">Edit</button>
+                    <button className="btn btn-light function-btn" type="submit">Editar</button>
                 }
                 {!this.state.isEdit &&
-                    <button className="btn btn-primary" type="submit">Create</button>
+                    <button className="btn btn-light function-btn" type="submit">Crear</button>
                 }
                 </div>
             </form>
+            </>
         )
 
     }

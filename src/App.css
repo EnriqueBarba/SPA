@@ -17,6 +17,11 @@
   }
 }
 
+a, a:hover {
+  text-decoration: none;
+  color: rgba(34, 33, 33, 0.805);
+}
+
 .MyNavBar .link {
   color: white;
   text-decoration: none;
@@ -38,28 +43,35 @@
   margin-left: 0.1rem;
 }
 
-.Products{
-  list-style: none;
+.Products {
   padding: 0;
+  justify-content: space-around;
 }
 
 .Product {
   box-shadow: 0 0 10px 0 rgba(85, 85, 85,0.2);
+  color: rgba(34, 33, 33, 0.805);
 }
 
-.Product a{
-  color: rgba(34, 33, 33, 0.805);
-  text-decoration: none;
+.Product div.card {
+  padding: 1rem;
+  width: 18rem;
+  min-height: 100%;
 }
 
 .Product label,span{
-  font-size: 2rem;
+  font-size: 1rem;
   
 }
 
 .Product img{
   max-width: 100vw;
   max-height: 30vh;
+  padding: 2rem;
+}
+
+.Buy-product {
+  margin: 0 auto;
 }
 
 .Error{
@@ -78,24 +90,59 @@
   padding: 1rem 0;
 }
 
-.Cart ul {
+.row {
+  margin: 0;
+}
+
+.Cart {
   list-style:none;
 }
 
 .Order {
   padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .Order img {
-  height: 25%;
+  max-width: 12rem;
+  max-height: 12rem;
+}
+
+.image-order, .image-prod {
+  flex:1 1 auto;
+}
+
+.Cart.container {
+  justify-content: space-around;
+}
+
+.Cart-order.card {
+  width:18rem;
+  padding: 1rem;
+}
+
+.Cart-order img {
+  max-width: 12rem;
+  max-height: 12rem;
+}
+
+.Orders a {
+  text-decoration: none;
+  color: rgba(34, 33, 33, 0.805);
+  margin-bottom: 1rem
+}
+
+.Orders {
+  list-style: none;
 }
 
 .CategorySerach {
   border: 1px solid rgba(85, 85, 85,0.2);
+  margin-bottom: 1rem;
 } 
 
 .CategorySerach h3 {
-  margin: 1rem 0;
+  margin: 0.2rem 0;
 }
 
 .CategorySerach a {

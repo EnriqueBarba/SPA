@@ -6,14 +6,14 @@ const Menu = ({currentUser, logout}) => (
         <>
         {!currentUser && <>
             <Nav.Link className='link' href="/login"> Log In </Nav.Link>
-            <Nav.Link className='link' href="/register"> Register </Nav.Link>
+            <Nav.Link className='link' href="/register"> Registrarse </Nav.Link>
             </>
         }
         {currentUser && <>
-            <Nav.Link className='link' href="/cart"> My Cart </Nav.Link>
-            <Nav.Link className='link' href="/new/product"> Add Product </Nav.Link>
-            <Nav.Link className='link' href="/orders"> Orders </Nav.Link>
-            <Nav.Link className='link' href="/profile"> Profile </Nav.Link>
+            <Nav.Link className='link' href="/cart"> Mi cesta </Nav.Link>
+            <Nav.Link className='link' href="/new/product"> Subir Producto </Nav.Link>
+            <Nav.Link className='link' href="/orders"> Mis Pedidos </Nav.Link>
+            <Nav.Link className='link' href="/profile"> Perfil </Nav.Link>
             <Nav.Link className="text-muted" onClick={logout}>Log Out </Nav.Link>
             </>
         }

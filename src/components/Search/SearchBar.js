@@ -18,8 +18,12 @@ class SearchBar extends React.Component  {
         return (
             <div className="search-bar" role="search">
                 <div className="d-flex"> 
-                <input className="form-control" type="text" name="search" placeholder="Search..." onChange={this.handleChange} value={this.state.search} />
-                <Link to={`/products/search/${this.state.search}`} replace={true} className="search-button" type="submit" value=""><i className="fa fa-search"></i></Link>
+                <input className="form-control" 
+                    type="text" name="search" placeholder="Buscar productos..." 
+                    onChange={this.handleChange} value={this.state.search} />
+                <Link to={`/products/search/${this.state.search}`} 
+                    replace={true} className="search-button" 
+                    type="submit" value=""><i className="fa fa-search"></i></Link>
                 </div>
             </div>
         )

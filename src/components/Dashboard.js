@@ -12,7 +12,7 @@ import Orders from '../ui/Orders'
 
 const Dashboard = ({currentUser}) => {
     return (
-        <div className="Dashboard">
+        <div className="Dashboard container">
             <Switch>
                 <Route exact path="/" component={Products}/>
                 <Route exact path="/products/:cat" component={Products}/>  

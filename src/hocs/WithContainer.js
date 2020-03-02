@@ -12,8 +12,19 @@ export const WithContainer = (type, WrappedComponent) => {
     }
     
     async componentDidMount() {
-      const list = await apiList[type]()
-      this.setState({ list })
+      const param = this.props.match.params
+
+      if ( (PRODUCTS_KEY === type) &&
+        ( (param && Object.keys(param)[0] === 'search') ) ) {
+        const list = await apiList[PRODUCT_NAME](param.search)
+        this.setState({list})
+      } else  {
+        const list = await apiList[type]()
+        this.setState({ list })
+      }
+
+      //const list = await apiList[type]()
+      //this.setState({ list })
     }
 
     async componentDidUpdate(prevProps) {

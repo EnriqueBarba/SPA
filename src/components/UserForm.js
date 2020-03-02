@@ -149,8 +149,9 @@ class UserForm extends React.Component {
         return (
             <form className="container" onSubmit={this.handleSubmit}>
                 <div className="form-group row mb-2">
-                    <label className="" htmlFor='fullName'>Full Name: </label>
-                    <input className="form-control" type='text' name='fullName' id='fullName' value={data.fullName} onChange={this.handleChange} onBlur={this.handleBlur}/>
+                    <label className="" htmlFor='fullName'>Nombre completo: </label>
+                    <input className="form-control" type='text' name='fullName' 
+                        id='fullName' value={data.fullName} onChange={this.handleChange} onBlur={this.handleBlur}/>
                     <span className="icon is-small is-right">
                         {touch.fullName && !error.fullName && (
                             <i className="Success fa fa-check"></i>
@@ -163,7 +164,8 @@ class UserForm extends React.Component {
 
                 <div className="form-group row mb-2">
                     <label className="" htmlFor='email'>Email: </label>
-                    <input className="form-control" type='email' name='email' id='email' value={data.email} onChange={this.handleChange} onBlur={this.handleBlur}/>
+                    <input className="form-control" type='email' name='email' 
+                        id='email' value={data.email} onChange={this.handleChange} onBlur={this.handleBlur}/>
                     <span className="icon is-small is-right">
                         {touch.email && !error.email && (
                             <i className="Success fa fa-check"></i>
@@ -175,8 +177,9 @@ class UserForm extends React.Component {
                 </div>
 
                 <div className="form-group row mb-2">
-                    <label className="" htmlFor='password'>Password: </label>
-                    <input className="form-control" type='password' name='password' id='password' value={data.password} onChange={this.handleChange} onBlur={this.handleBlur}/>
+                    <label className="" htmlFor='password'>Contraseña: </label>
+                    <input className="form-control" type='password' name='password' 
+                        id='password' value={data.password} onChange={this.handleChange} onBlur={this.handleBlur}/>
                     <span className="icon is-small is-right">
                         {touch.password && !error.password && (
                             <i className="Success fa fa-check"></i>
@@ -188,8 +191,9 @@ class UserForm extends React.Component {
                 </div>
 
                 <div className="form-group row mb-2">
-                    <label className="" htmlFor='country'>Country: </label>
-                    <select className="form-control" name='country' id='country' onChange={this.handleChange} onBlur={this.handleBlur}>
+                    <label className="" htmlFor='country'>Pais: </label>
+                    <select className="form-control" name='country' 
+                        id='country' onChange={this.handleChange} onBlur={this.handleBlur}>
                         {COUNTRIES.map((e,i) => {
                                 if (data.country === e ) {
                                     return <option selected key={i} value={e}>{e}</option>
@@ -210,8 +214,9 @@ class UserForm extends React.Component {
                 </div>
 
                 <div className="form-group row mb-2">
-                    <label className="" htmlFor='postalCode'>Postal Code: </label>
-                    <input className="form-control" type='text' name='postalCode' id='postalCode' value={data.postalCode} onChange={this.handleChange} onBlur={this.handleBlur}/>
+                    <label className="" htmlFor='postalCode'>Codigo postal: </label>
+                    <input className="form-control" type='text' name='postalCode' 
+                        id='postalCode' value={data.postalCode} onChange={this.handleChange} onBlur={this.handleBlur}/>
                     <span className="icon is-small is-right">
                         {touch.postalCode && !error.postalCode && (
                             <i className="Success fa fa-check"></i>
@@ -223,8 +228,9 @@ class UserForm extends React.Component {
                 </div>
 
                 <div className="form-group row mb-2">
-                    <label className="" htmlFor='street'>Street: </label>
-                    <input className="form-control" type='text' name='street' id='street' value={data.street} onChange={this.handleChange} onBlur={this.handleBlur}/>
+                    <label className="" htmlFor='street'>Calle: </label>
+                    <input className="form-control" type='text' name='street' 
+                        id='street' value={data.street} onChange={this.handleChange} onBlur={this.handleBlur}/>
                     <span className="icon is-small is-right">
                         {touch.street && !error.street && (
                             <i className="Success fa fa-check"></i>
@@ -235,8 +241,8 @@ class UserForm extends React.Component {
                     </span>
                 </div>
                 <div>
-                    {data.id && <button className="btn btn-primary" type="submit">Edit</button>}
-                    {!data.id && <button className="btn btn-success" type="submit">Register</button>}
+                    {data.id && <button className="btn btn-light function-btn" type="submit">Editar</button>}
+                    {!data.id && <button className="btn btn-light function-btn" type="submit">Registrarse</button>}
                 </div>           
             </form>
         )
