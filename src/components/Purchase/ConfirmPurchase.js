@@ -8,7 +8,6 @@ class ConfirmPurchase extends React.Component {
       return (
       <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
         <div className="card-pay">
-          <h6>Order by</h6>
           <Elements>
             <PurchaseForm {...this.props}/>
           </Elements>

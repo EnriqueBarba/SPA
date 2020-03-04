@@ -17,7 +17,6 @@ class CheckoutForm extends Component {
         this.props.stripe.createToken()
         .then( ({token}) => {
           if (token){
-            
             if (this.state.item === 'order') {
               const data = {
                   order: this.state.id,
@@ -49,8 +48,8 @@ class CheckoutForm extends Component {
   }
 
   componentDidMount = () => {
-    const item = this.props.match.params.item
-    const itemId =  this.props.match.params.id
+    const item = this.props.item ? this.props.item : ''
+    const itemId =  this.props.id ? this.props.id : ''
     this.setState({
         ...this.state,
         id: itemId,
@@ -63,7 +62,7 @@ class CheckoutForm extends Component {
 
       return (
         <div className="container">
-          <p>Please, fill the payment details:</p>
+          <p>Por favor, rellena los detalles de pago:</p>
           <div className='col'>
             <CardElement style={{
                 base: {
@@ -79,7 +78,9 @@ class CheckoutForm extends Component {
                 }
             }} />
           </div>
-          <button className='btn btn-light function-btn' text='Pagar' width='w-100' onClick={this.handleSubmit}>Confirm & Purchase</button>
+          <div className="d-flex justify-content-center">
+            <button className='btn btn-light function-btn' text='Pagar' width='w-100' onClick={this.handleSubmit}>Confirmar pago</button>
+          </div>
         </div>
       );
     }

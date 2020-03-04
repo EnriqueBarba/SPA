@@ -17,6 +17,13 @@
   }
 }
 
+.text-upd {
+  color: green;
+}
+.text-del {
+  color: red;
+}
+
 a, a:hover {
   text-decoration: none;
   color: rgba(34, 33, 33, 0.805);
@@ -64,10 +71,20 @@ a, a:hover {
   
 }
 
-.Product img{
+a.Product img{
   max-width: 100vw;
   max-height: 30vh;
   padding: 2rem;
+}
+
+.Product.item-info img{
+  max-width: 50vw;
+  padding: 1rem;
+}
+
+.Product.item-info .extra-images img{
+  max-width: 15vw;
+  margin: 0.4rem;
 }
 
 .Buy-product {

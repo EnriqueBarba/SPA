@@ -7,10 +7,12 @@ import UserForm from './UserForm'
 import { WithAuthConsumer } from '../context/AuthContext'
 import ProductForm from './Product/ProductForm'
 import Cart from './Cart'
-import ConfirmPurchase from './Purchase/ConfirmPurchase'
 import Orders from '../ui/Orders'
+import PrivateRoute  from './misc/PrivateRoute '
 
 const Dashboard = ({currentUser}) => {
+
+    //TODO render en funcion del usuario o redirect
     return (
         <div className="Dashboard container">
             <Switch>
@@ -18,22 +20,15 @@ const Dashboard = ({currentUser}) => {
                 <Route exact path="/products/:cat" component={Products}/>  
                 <Route exact path="/products/search/:search" component={Products}/>  
                 <Route exact path="/product/details/:flag" component={ProductDetails}/>
-                {!currentUser && 
-                    <>
-                        <Route exact path="/login"  component={Login}/> 
-                        <Route exact path="/register" component={UserForm}/>
-                    </>
-                }
-                {currentUser && 
-                    <>
-                        <Route exact path="/profile" component={UserForm}/>
-                        <Route exact path="/new/product" component={ProductForm}/>
-                        <Route exact path="/update/product/:flag" component={ProductForm}/> 
-                        <Route exact path="/cart" component={Cart}/> 
-                        <Route exact path="/confirm/:item/:id" component={ConfirmPurchase}/> 
-                        <Route exact path="/orders" component={Orders}/>
-                    </>
-                }
+
+                <PrivateRoute exact path="/login"  component={Login} currentUser={!currentUser}/> 
+                <PrivateRoute exact path="/register" component={UserForm} currentUser={!currentUser}/>
+
+                <PrivateRoute path="/profile" component={UserForm} currentUser={currentUser}/>
+                <PrivateRoute path="/new/product" component={ProductForm} currentUser={currentUser}/>
+                <PrivateRoute path="/update/product/:flag" component={ProductForm} currentUser={currentUser}/> 
+                <PrivateRoute path="/cart" component={Cart} currentUser={currentUser}/> 
+                <PrivateRoute path="/orders" component={Orders} currentUser={currentUser}/>
             </Switch>
         </div>
     )

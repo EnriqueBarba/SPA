@@ -1,6 +1,7 @@
 import React from 'react'
 import { createOrder, addToCart } from '../../services/ApiService';
-import { Redirect } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
+import ConfirmPurchase from '../Purchase/ConfirmPurchase';
 
 class BuyProduct extends React.Component{
     state={
@@ -9,8 +10,18 @@ class BuyProduct extends React.Component{
         doCart: false,
         error: false,
         order: null,
-        addedToCart: false
+        addedToCart: false,
+        showModal: false
     }
+
+    
+    handleModal = () => {
+        this.setState({
+            ...this.state,
+            showModal: !this.state.showModal
+        })
+    }
+    
 
     handleChange = (e) => {
         const {name, value} = e.target
@@ -41,7 +52,8 @@ class BuyProduct extends React.Component{
             .then(o => {
                 this.setState({
                     ...this.state,
-                    order: o.id
+                    order: o.id,
+                    showModal:true
                 })
             }).catch(_ => {
                 this.setState({
@@ -73,10 +85,6 @@ class BuyProduct extends React.Component{
     render(){
         const {quantity, error, order, addedToCart} = this.state;
 
-        if (order) {
-            return <Redirect to={`/confirm/order/${order}`} />
-        }
-
         return (
             <form className="Buy-product" onSubmit={this.handleSubmit}>
                 <div className="form-group">
@@ -85,7 +93,8 @@ class BuyProduct extends React.Component{
                             Añadido correctamente!
                         </div>
                     }
-                    <input type='number' value={quantity} onChange={this.handleChange} min={1} name='quantity'/>
+                    <label htmlFor="quantity">Comprar productos: </label><br/>
+                    <input type='number' value={quantity} onChange={this.handleChange} min={1} name='quantity' id='quantity'/>
                     { error &&  
                         <div className="Error feedback">
                             Ops algo ha ido mal...
@@ -98,6 +107,20 @@ class BuyProduct extends React.Component{
                     <input className="btn btn-light function-btn" id="doCart" 
                         name="doCart" type="submit" value='Añadir a la cesta' onClick={this.handleClick}/>
                 </div>
+
+                <>
+                    <Modal show={this.state.showModal} onHide={this.handleModal}>
+                        <Modal.Header closeButton>
+                        <Modal.Title>Confirmación del pago</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <ConfirmPurchase item={'order'} id={order}/>
+                        </Modal.Body>
+                        <Modal.Footer>
+                        </Modal.Footer>
+                    </Modal>
+                </>
+
             </form>
         )
     }

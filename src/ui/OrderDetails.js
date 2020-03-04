@@ -6,7 +6,7 @@ import { WithCartConsumer } from '../context/CartContext'
 const OrderDetails = ({order, updateOrder}) => {
     return(
 
-        <Card className='Cart-order card'>
+        <Card className='Cart-order card col-12 mb-2'>
             <div className="image-order">
                <Card.Img variant="top" src={order.product.images[0]} alt="Product" />
             </div>

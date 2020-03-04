@@ -28,11 +28,12 @@ class Login extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        
         login({...this.state.data})
             .then(user =>{
+                console.info('dentro ',user)
                 this.setState({auth:true})
                 this.props.setUser(user)
-                console.log(this.props)
                 this.props.getCart()
             })
             .catch(console.error)
