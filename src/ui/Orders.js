@@ -35,9 +35,13 @@ const Orders = ({ list }) => {
                             <Card.Footer>
                                 {order.payment && order.payment.paid && <>Pagado</>}    
                                 {(!order.payment || !order.payment.paid) && 
-                                    <><Button className="btn btn-light gold-btn function-btn" onClick={() => handleShow(order.id)}>
-                                        <i className="my-color-icon fa fa-money"></i>  Pagar Ahora
-                                    </Button>
+                                    <>
+                                        <Button className="btn btn-light gold-btn function-btn" onClick={() => handleShow(order.id)}>
+                                            <i className="my-color-icon fa fa-money"></i>  Pagar Ahora
+                                        </Button>
+                                        {/* <Button className="btn btn-light gold-btn function-btn" onClick={() => handleDelete(order.id)}>
+                                            <i className="my-color-icon fa fa-trash"></i>  Eliminar pedido
+                                        </Button> */}
                                     </>}                
                             </Card.Footer>
                         </Card.Body>

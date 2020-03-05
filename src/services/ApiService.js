@@ -47,6 +47,7 @@ const deleteProduct = obj => http.post('/product/delete', obj).then(res => res)
 const getOrders = _ => catcher(() => http.get('/orders'))
 const getOrder = id => catcher(() => http.get(`/order/${id}`))
 const createOrder = obj => http.post('/order/new', obj).then(res => res)
+const deleteOrder = obj => http.patch('/order/update', obj).then(res => res)
 const updateOrder = obj => catcher(() => http.patch('/order/update', obj))
 const purchase = obj => http.post('/order/purchase',obj).then(res => res)
 
@@ -83,6 +84,7 @@ export {getOrders}
 export {getOrder}
 export {createOrder}
 export {updateOrder}
+export {deleteOrder}
 export {purchase}
 export {getCart}
 export {addToCart}
