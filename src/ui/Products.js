@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 
 const Products = ({ list }) =>{
-    console.log('ESTO ES LIST', list)
+
 return (   
 <div className='Products row'>
         {list.map((prod, i) =>
