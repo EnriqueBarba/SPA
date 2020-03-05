@@ -4,8 +4,10 @@ import { WithContainer } from '../hocs/WithContainer'
 import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 
-const Products = ({ list }) =>
-    <div className='Products row'>
+const Products = ({ list }) =>{
+    console.log('ESTO ES LIST', list)
+return (   
+<div className='Products row'>
         {list.map((prod, i) =>
             <Link className="Product mb-2" key={i} to={`/product/details/${prod.flag}`}>
                 <Card >
@@ -19,7 +21,6 @@ const Products = ({ list }) =>
                 </Card>
             </Link>
         )}
-    </div>
-
-
-export default WithContainer(PRODUCTS_KEY, Products)
+    </div>)
+}
+    export default WithContainer(PRODUCTS_KEY, Products)
