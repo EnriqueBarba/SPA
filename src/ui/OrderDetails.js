@@ -17,7 +17,9 @@ const OrderDetails = ({order, updateOrder}) => {
                     Precio total: {order.ammount * order.buyingPrice}€
                 </Card.Text>
             </Card.Body>
-            <Button className="btn btn-light function-btn" onClick={()=>updateOrder({orderId:order.id})}>Eliminar </Button>
+            <Button className="btn btn-light function-btn del-hover" id="del-Order" onClick={()=>updateOrder({orderId:order.id})}>
+                <i className="fa fa-trash"></i> Eliminar 
+            </Button>
         </Card>
 
     )

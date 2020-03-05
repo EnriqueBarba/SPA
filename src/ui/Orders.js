@@ -13,17 +13,14 @@ const Orders = ({ list }) => {
         setData({showModal:false, orderId:''});
     }
     const handleShow = (id) => {
-        console.info('Entro ', id)
-        console.info(' ',showModal, orderId)
         setData({showModal:true, orderId:id});
     }
     
     return(<>
-        <h2>Pedidos:</h2>
+        <h2 className="mt-4 mb-4">Pedidos:</h2>
         <CardDeck className="Orders row flex-column">
             {
                 list.map((order, i) =>
-
                     <Card key={i} className='Order row flex-row' >
                         <Card.Title className="col-12">{order.product.name}</Card.Title>
                         <div className="image-order justify-content-around d-flex">
@@ -38,7 +35,9 @@ const Orders = ({ list }) => {
                             <Card.Footer>
                                 {order.payment && order.payment.paid && <>Pagado</>}    
                                 {(!order.payment || !order.payment.paid) && 
-                                    <><Button className="btn btn-light function-btn" onClick={() => handleShow(order.id)}>Pagar Ahora</Button>
+                                    <><Button className="btn btn-light gold-btn function-btn" onClick={() => handleShow(order.id)}>
+                                        <i className="my-color-icon fa fa-money"></i>  Pagar Ahora
+                                    </Button>
                                     </>}                
                             </Card.Footer>
                         </Card.Body>

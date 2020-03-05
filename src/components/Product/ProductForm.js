@@ -241,10 +241,14 @@ class ProductForm extends React.Component {
                 </div>
                 <div>
                 {this.state.isEdit &&
-                    <button className="btn btn-light function-btn" type="submit">Editar</button>
+                    <button className="btn btn-light gold-btn function-btn" type="submit">
+                        <i className="fa fa-edit my-color-icon"></i> Editar
+                    </button>
                 }
                 {!this.state.isEdit &&
-                    <button className="btn btn-light function-btn" type="submit">Crear</button>
+                    <button className="btn btn-light gold-btn function-btn" type="submit">
+                        <i className="fa fa-plus-circle my-color-icon"></i> Crear
+                    </button>
                 }
                 </div>
             </form>

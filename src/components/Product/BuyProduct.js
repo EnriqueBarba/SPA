@@ -35,6 +35,16 @@ class BuyProduct extends React.Component{
         const name = e.target.name
         this.setState({
             ...this.state,
+            doCart: false,
+            [name]: !this.state.name
+        })
+    }
+
+    handleCart = (e) => {
+        const name = e.target.name
+        this.setState({
+            ...this.state,
+            doBuy: false,
             [name]: !this.state.name
         })
     }
@@ -102,10 +112,22 @@ class BuyProduct extends React.Component{
                     }
                 </div>
                 <div className="d-flex justify-content-around">
-                    <input className="btn btn-light function-btn" id="doBuy" 
-                        name="doBuy" type="submit" value='Comprar ya' onClick={this.handleClick}/>
-                    <input className="btn btn-light function-btn" id="doCart" 
-                        name="doCart" type="submit" value='Añadir a la cesta' onClick={this.handleClick}/>
+                    <div>
+            
+                        <button className="pl-2 btn btn-light gold-btn function-btn" id="doBuy" 
+                            name="doBuy" type="submit" value='Comprar ya' onClick={this.handleClick}>
+                                <i className="my-color-icon fa fa-money"></i> Comprar ya
+                        </button>
+                    </div>
+                    <div>
+                        
+                        <button className="pl-2 btn btn-light gold-btn function-btn" id="doCart" 
+                            name="doCart" type="submit" value='Añadir a la cesta' onClick={this.handleCart}>
+                                <i className="my-color-icon fa fa-shopping-cart"></i> Añadir a la cesta
+                        </button>
+                    </div>
+                    
+                    
                 </div>
 
                 <>

@@ -20,7 +20,6 @@ class DeleteProduct extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.info(this.state)
         const data = {id: this.state.id}
         deleteProduct(data).then(_ => 
             this.setState({
@@ -39,7 +38,7 @@ class DeleteProduct extends React.Component {
         return(
             <form onSubmit={this.handleSubmit}>
                 <button to={`/delete/product/${this.state.id}`} 
-                    className='btn btn-light function-btn mb-2'>Eliminar <i className="fa fa-trash text-del"></i>
+                    className='btn btn-light Error function-btn mb-2'>Eliminar <i className="fa fa-trash text-del"></i>
                 </button>
             </form>
         )

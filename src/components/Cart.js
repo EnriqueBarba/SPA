@@ -22,8 +22,12 @@ const Cart = ({cart, getCart}) => {
     return (
         <div className='Cart container row'>
             <h4 className="mb-2 col-12 mt-4 mb-4">Tienes {items} productos en tu cesta</h4>
+            {(items==='0' || items===0) && 
+                <div className="col-12">
+                    <p>Ojea nuestros productos!!</p>
+                </div>}
             {orders.length > 0 &&
-                <Button className="btn btn-light function-btn mb-2 col-12" onClick={() => handleShow()}>Comprar todo</Button>
+                <Button className="btn btn-light gold-btn function-btn mb-2 col-12" onClick={() => handleShow()}>Comprar todo</Button>
             }
                 {orders.map((e,i) => <OrderDetails key={i} order={e} />)}
             {orders.length > 10 && 

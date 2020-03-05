@@ -241,8 +241,12 @@ class UserForm extends React.Component {
                     </span>
                 </div>
                 <div>
-                    {data.id && <button className="btn btn-light function-btn" type="submit">Editar</button>}
-                    {!data.id && <button className="btn btn-light function-btn" type="submit">Registrarse</button>}
+                    {data.id && <button className="btn btn-light gold-btn function-btn" type="submit">
+                        <i className="fa fa-edit my-color-icon"></i> Editar
+                        </button>}
+                    {!data.id && <button className="btn btn-light gold-btn function-btn" type="submit">
+                        <i className="fa fa-users my-color-icon"></i> Registrarse
+                        </button>}
                 </div>           
             </form>
         )

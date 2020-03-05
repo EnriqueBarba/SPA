@@ -177,3 +177,19 @@ a.Product img{
 .CategorySerach .carousel-indicators {
   display: none;
 }
+
+.gold-btn {
+  background-color:  rgb(219, 157, 41, 0.8)
+}
+
+.my-color-icon {
+  color:  rgba(34, 33, 33, 0.805);
+}
+
+#del-Order:hover {
+  color:red;
+}
+
+div.extra-images {
+  margin: 0 2rem;
+}

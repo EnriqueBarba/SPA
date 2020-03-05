@@ -12,7 +12,7 @@ const ProductDetails = ({name = '', images = [], description = '', price=0, ammo
 return (
   <Card className="details">
     <div className="Product item-info">
-      <Card.Title>{name}</Card.Title>
+      <Card.Title><b>{name}</b></Card.Title>
       <div>
         <Image src={images[0]} alt='product' thumbnail />
         {images.length > 1 &&
@@ -40,7 +40,7 @@ return (
         <div className="mt-4 row d-flex justify-content-center">
           <div className="d-inline mr-2">
             <Link to={`/update/product/${flag}`} 
-              className='btn btn-light function-btn mb-2'>Editar <i className="fa fa-edit text-upd"></i></Link>
+              className='btn btn-light Success function-btn mb-2'>Editar <i className="fa fa-edit text-upd"></i></Link>
           </div>
           <div className="d-inline ml-2">
             <DeleteProduct prodId={id} />

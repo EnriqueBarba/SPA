@@ -3,12 +3,14 @@ import React, { Component, Fragment } from 'react'
 import { apiList } from '../services/ApiService'
 import {PRODUCTS_KEY, CAT_KEY,PRODUCT_NAME} from '../services/constants'
 import CategorySearch from '../components/Search/CategorySearch'
+import { Spinner } from 'react-bootstrap'
 
 
 export const WithContainer = (type, WrappedComponent) => {
   return class extends Component {
     state = {
-      list: []
+      list: [],
+      loading: true
     }
     
     async componentDidMount() {
@@ -17,14 +19,18 @@ export const WithContainer = (type, WrappedComponent) => {
       if ( (PRODUCTS_KEY === type) &&
         ( (param && Object.keys(param)[0] === 'search') ) ) {
         const list = await apiList[PRODUCT_NAME](param.search)
-        this.setState({list})
+        this.setState({
+          loading: false,
+          list: list
+        })
       } else  {
         const list = await apiList[type]()
-        this.setState({ list })
+        this.setState({ 
+          loading: false,
+          list: list 
+        })
       }
 
-      //const list = await apiList[type]()
-      //this.setState({ list })
     }
 
     async componentDidUpdate(prevProps) {
@@ -39,25 +45,43 @@ export const WithContainer = (type, WrappedComponent) => {
         ( (prevPath !== currPath && currValue === 'cat') 
         || ( (currValue === 'cat') && (prevValue === currValue) && (prevParam.cat !== currParam.cat) ) ) ) {
         const list = await apiList[CAT_KEY](currParam.cat)
-        this.setState({list})
+        this.setState({
+          ...this.state,
+          list:list
+        })
       } else if ( (PRODUCTS_KEY === type) &&
         ( ( prevPath !== currPath && currValue === 'search') 
         || ( (currValue === 'search') && (prevValue === currValue) && (prevParam.search !== currParam.search) ) ) ) {
         const list = await apiList[PRODUCT_NAME](currParam.search)
-        this.setState({list})
+        this.setState({
+          ...this.state,
+          list:list
+        })
       } else if ( this.props.match.path === '/' && prevProps.match.path !== '/' ) {
         const list = await apiList[type]()
-        this.setState({ list })
+        this.setState({ 
+          ...this.state,
+          list:list 
+        })
       }
 
     }
 
     render() {
-      const { list } = this.state
+      const { list, loading } = this.state
+
+      if (loading) {
+        return (<Spinner animation="grow" />)
+      }
+
       return (
         <Fragment>
-          {PRODUCTS_KEY === type && <CategorySearch />}
-          <WrappedComponent {...{list}} />
+          {loading && <Spinner animation="grow" />}
+          {!loading && <>
+            {PRODUCTS_KEY === type && <CategorySearch />}
+            <WrappedComponent {...{list}} />
+            </>
+          }
         </Fragment>
       )
     }

@@ -25,7 +25,6 @@ class CheckoutForm extends Component {
 
               Purchase(data)
                 .then(payment => {
-                    console.info('Payment', payment)
                     this.setState({
                       completedPay : true
                     })
@@ -79,7 +78,7 @@ class CheckoutForm extends Component {
             }} />
           </div>
           <div className="d-flex justify-content-center">
-            <button className='btn btn-light function-btn' text='Pagar' width='w-100' onClick={this.handleSubmit}>Confirmar pago</button>
+            <button className='btn btn-light gold-btn function-btn' text='Pagar' width='w-100' onClick={this.handleSubmit}>Confirmar pago</button>
           </div>
         </div>
       );
