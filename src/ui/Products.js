@@ -4,7 +4,7 @@ import { WithContainer } from '../hocs/WithContainer'
 import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 
-const Products = ({ list }) =>{
+const Products = ({ list=[] }) =>{
 
 return (   
 <div className='Products row'>

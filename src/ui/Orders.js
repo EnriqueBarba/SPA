@@ -5,7 +5,7 @@ import { CardDeck, Card, Modal } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import ConfirmPurchase from '../components/Purchase/ConfirmPurchase'
 
-const Orders = ({ list }) => {
+const Orders = ({ list=[] }) => {
     
     const [{showModal, orderId}, setData] = useState({showModal:false,orderId:''});
 
