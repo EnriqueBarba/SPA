@@ -2,9 +2,7 @@ import axios from 'axios'
 import {PRODUCTS_KEY, ORDERS_KEY, CAT_KEY, PRODUCT_NAME} from './constants'
 
 const http = axios.create({
-    
-    origin: '*',
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: process.env.REACT_APP_URL || 'http://localhost:3000',
     withCredentials: true
 })
 
