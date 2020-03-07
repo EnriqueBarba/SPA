@@ -9,6 +9,7 @@ import ProductForm from './Product/ProductForm'
 import Cart from './Cart'
 import Orders from '../ui/Orders'
 import PrivateRoute  from './misc/PrivateRoute '
+import { login } from '../services/ApiService'
 
 const Dashboard = ({currentUser}) => {
 
@@ -21,14 +22,27 @@ const Dashboard = ({currentUser}) => {
                 <Route exact path="/products/search/:search" component={Products}/>  
                 <Route exact path="/product/details/:flag" component={ProductDetails}/>
 
-                <PrivateRoute exact path="/login"  component={Login} currentUser={!currentUser}/> 
-                <PrivateRoute exact path="/register" component={UserForm} currentUser={!currentUser}/>
-
-                <PrivateRoute path="/profile" component={UserForm} currentUser={currentUser}/>
-                <PrivateRoute path="/new/product" component={ProductForm} currentUser={currentUser}/>
-                <PrivateRoute path="/update/product/:flag" component={ProductForm} currentUser={currentUser}/> 
-                <PrivateRoute path="/cart" component={Cart} currentUser={currentUser}/> 
-                <PrivateRoute path="/orders" component={Orders} currentUser={currentUser}/>
+                <PrivateRoute exact path="/login" >
+                    <Login />
+                </PrivateRoute> 
+                <PrivateRoute exact path="/register" >
+                    <UserForm />
+                </PrivateRoute>
+                <PrivateRoute path="/profile" >
+                    <UserForm />
+                </PrivateRoute>
+                <PrivateRoute path="/new/product" >
+                    <ProductForm />
+                </PrivateRoute>
+                <PrivateRoute path="/update/product/:flag" > 
+                    <ProductForm />
+                </PrivateRoute>
+                <PrivateRoute path="/cart" > 
+                    <Cart />
+                </PrivateRoute>
+                <PrivateRoute path="/orders" >
+                    <Orders />
+                </PrivateRoute>
             </Switch>
         </div>
     )
