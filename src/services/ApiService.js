@@ -2,7 +2,7 @@ import axios from 'axios'
 import {PRODUCTS_KEY, ORDERS_KEY, CAT_KEY, PRODUCT_NAME} from './constants'
 
 const http = axios.create({
-    baseURL: process.env.REACT_APP_URL,
+    baseURL: process.env.REACT_APP_API_URL,
     withCredentials: true
 })
 
@@ -18,43 +18,32 @@ http.interceptors.response.use(
   }
 )
 
-const catcher = async fn => {
-    try {
-      return (await fn())
-    } catch(error) {
-      return []
-    }
-  }
+const login = obj => http.post("/login",obj)
+const logout = _ => http.post("/logout")
 
-const login = obj => http.post("/login",obj).then(res => res)
+const register = data => http.post('/register', data)
+const updateProfile = obj => http.post('/profile', obj)
 
-const logout = _ => catcher(() => http.post("/logout"))
+const searchByCat = cat => http.get(`/search/${cat}`)
+const searchByName = search => http.get(`/products/${search}`)
 
+const getProducts = _ =>  http.get('/products')
+const getSingleProduct = flag => http.get(`/product/${flag}`)
+const newProduct = obj => http.post('/product/new', obj)
+const updateProduct = obj => http.post('/product/update', obj)
+const deleteProduct = obj => http.post('/product/delete', obj)
 
+const getOrders = _ => http.get('/orders')
+const getOrder = id => http.get(`/order/${id}`)
+const createOrder = obj => http.post('/order/new', obj)
+const deleteOrder = obj => http.patch('/order/update', obj)
+const updateOrder = obj => http.patch('/order/update', obj)
+const purchase = obj => http.post('/order/purchase',obj)
 
-const register = data => http.post('/register', data).then(res => res)
-const updateProfile = obj => http.post('/profile', obj).then(res => res)
-
-const searchByCat = cat => catcher(() => http.get(`/search/${cat}`))
-const searchByName = search => catcher(() => http.get(`/products/${search}`))
-
-const getProducts = _ => catcher(() => http.get('/products'))
-const getSingleProduct = flag => catcher(() => http.get(`/product/${flag}`))
-const newProduct = obj => http.post('/product/new', obj).then(res => res)
-const updateProduct = obj => http.post('/product/update', obj).then(res => res)
-const deleteProduct = obj => http.post('/product/delete', obj).then(res => res)
-
-const getOrders = _ => catcher(() => http.get('/orders'))
-const getOrder = id => catcher(() => http.get(`/order/${id}`))
-const createOrder = obj => http.post('/order/new', obj).then(res => res)
-const deleteOrder = obj => http.patch('/order/update', obj).then(res => res)
-const updateOrder = obj => catcher(() => http.patch('/order/update', obj))
-const purchase = obj => http.post('/order/purchase',obj).then(res => res)
-
-const getCart = _ => http.get('/cart').then(res => res)
-const addToCart = obj => http.post('/cart/add', obj).then(res => res)
-const updateCart = orderId => http.patch('/cart/update', orderId).then(res => res)
-const purchaseCart = obj => http.post('/cart/purchase',obj).then(res => res)
+const getCart = _ => http.get('/cart')
+const addToCart = obj => http.post('/cart/add', obj)
+const updateCart = orderId => http.patch('/cart/update', orderId)
+const purchaseCart = obj => http.post('/cart/purchase',obj)
 
 
 export const apiList = {

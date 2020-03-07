@@ -31,11 +31,9 @@ class Login extends React.Component {
         
         login({...this.state.data})
             .then(user =>{
-                this.props.setUser(user)
-                
                 this.setState({auth:true})
- 
-                })
+                this.props.setUser(user)
+            })
             .catch(console.error)
         
     }

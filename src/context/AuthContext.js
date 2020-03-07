@@ -6,7 +6,7 @@ const AuthContext = createContext();
 export class AuthContextProvider extends React.Component {
 
     state = {
-        user: JSON.parse(localStorage.getItem('user')) //parse json local storage
+        user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null
     }
 
     setUser = (user) => {
@@ -33,13 +33,10 @@ export class AuthContextProvider extends React.Component {
     }
 
 }
-
-//export 
+export default AuthContext;
 
 export const WithAuthConsumer = (WrappedComponent) => (props) => (
     <AuthContext.Consumer>
       {(authProps) => (<WrappedComponent {...props} {...authProps} />)}
     </AuthContext.Consumer>
   )
-  
-export default AuthContext;
