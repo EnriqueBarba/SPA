@@ -13,7 +13,6 @@ http.interceptors.response.use(
       localStorage.clear()
       window.location.assign('/login')
     }
-
     return Promise.reject(error)
   }
 )

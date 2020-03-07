@@ -33,10 +33,11 @@ export class AuthContextProvider extends React.Component {
     }
 
 }
-export default AuthContext;
 
 export const WithAuthConsumer = (WrappedComponent) => (props) => (
     <AuthContext.Consumer>
       {(authProps) => (<WrappedComponent {...props} {...authProps} />)}
     </AuthContext.Consumer>
-  )
+);
+
+export default AuthContext;
