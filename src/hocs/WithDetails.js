@@ -7,11 +7,13 @@ export const WithDetails = (type, WrappedComponent) => {
       details: {}
     }
 
-    async componentDidMount() {
+    componentDidMount() {
       const { match: { params } } = this.props
       const para = params.id || params.flag
-      const details = await apiDetails[type](para)
-      this.setState({ details })
+      apiDetails[type](para).then(details => {
+        this.setState({ details })
+      })
+      
     }
 
     render() {

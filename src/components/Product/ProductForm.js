@@ -52,32 +52,33 @@ class ProductForm extends React.Component {
         redirect: false
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         
-        if (this.props.match.params.flag) {
+        if (this.props.match && this.props.match.params.flag) {
 
-            const prod = await apiDetails[PRODUCTS_KEY](this.props.match.params.flag)
+            apiDetails[PRODUCTS_KEY](this.props.match.params.flag).then(prod => {
 
-            this.setState({
-                isEdit: true,
-                flag: prod.flag,
-                data: {
-                    id: prod.id,
-                    name: prod.name,
-                    price: prod.price,
-                    stock: prod.totalAmmount,
-                    ammountLeft: prod.ammountLeft,
-                    categories: prod.categories ? prod.categories.map(e => e) : [],
-                    description: prod.description
-                },
-                error: {
-                    name: false,
-                    price: false,
-                    stock: false,
-                    ammountLeft: false,
-                    categories: false,
-                    description: false
-                }
+                this.setState({
+                    isEdit: true,
+                    flag: prod.flag,
+                    data: {
+                        id: prod.id,
+                        name: prod.name,
+                        price: prod.price,
+                        stock: prod.totalAmmount,
+                        ammountLeft: prod.ammountLeft,
+                        categories: prod.categories ? prod.categories.map(e => e) : [],
+                        description: prod.description
+                    },
+                    error: {
+                        name: false,
+                        price: false,
+                        stock: false,
+                        ammountLeft: false,
+                        categories: false,
+                        description: false
+                    }
+                })
             })
         }
     }

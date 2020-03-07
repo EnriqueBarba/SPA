@@ -14,7 +14,7 @@ export const WithContainer = (type, WrappedComponent) => {
     }
     
     componentDidMount() {
-      const param = this.props.match.params
+      const param = this.props.match ? this.props.match.params : {}
 
       if ( (PRODUCTS_KEY === type) &&
         ( (param && Object.keys(param)[0] === 'search') ) ) {
@@ -37,10 +37,10 @@ export const WithContainer = (type, WrappedComponent) => {
     }
 
     componentDidUpdate(prevProps) {
-      const prevParam = prevProps.match.params
-      const prevPath = prevProps.match.path
-      const currParam = this.props.match.params
-      const currPath = this.props.match.path
+      const prevParam = prevProps.match ? prevProps.match.params : {}
+      const prevPath = prevProps.match ? prevProps.match.path : ''
+      const currParam = this.props.match ? this.props.match.params : {}
+      const currPath = this.props.match ? this.props.match.path : ''
       const prevValue = Object.keys(prevParam)[0] ? Object.keys(prevParam)[0].toString() : ''
       const currValue = Object.keys(currParam)[0] ? Object.keys(currParam)[0].toString() : ''
 
@@ -64,7 +64,7 @@ export const WithContainer = (type, WrappedComponent) => {
           })
         }).catch(console.info)
 
-      } else if ( this.props.match.path === '/' && prevProps.match.path !== '/' ) {
+      } else if ( currPath === '/' && prevPath !== '/' ) {
         apiList[type]().then(list => {
           this.setState({ 
             ...this.state,

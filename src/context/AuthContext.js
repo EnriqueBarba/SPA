@@ -10,7 +10,7 @@ export class AuthContextProvider extends React.Component {
     }
 
     setUser = (user) => {
-        localStorage.setItem('user', user ? JSON.stringify(user) : null)
+        localStorage.setItem('user', user ? user : null)
         this.setState({user})
     }
 
@@ -19,8 +19,9 @@ export class AuthContextProvider extends React.Component {
     }
 
     render() {
+        const user = this.state.user
         const value = {
-            currentUser: this.state.user,
+            currentUser: user,
             setUser: this.setUser,
             logout: this.logout
           }

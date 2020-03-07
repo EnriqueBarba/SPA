@@ -4,12 +4,11 @@ import Products from '../ui/Products'
 import Login from './Login'
 import ProductDetails from '../ui/ProductDetails'
 import UserForm from './UserForm'
-import { WithAuthConsumer } from '../context/AuthContext'
 import ProductForm from './Product/ProductForm'
 import Cart from './Cart'
 import Orders from '../ui/Orders'
 import PrivateRoute  from './misc/PrivateRoute '
-import { login } from '../services/ApiService'
+import NonLoggedRoute from './misc/NonLoggedRoute'
 
 const Dashboard = ({currentUser}) => {
 
@@ -21,13 +20,13 @@ const Dashboard = ({currentUser}) => {
                 <Route exact path="/products/:cat" component={Products}/>  
                 <Route exact path="/products/search/:search" component={Products}/>  
                 <Route exact path="/product/details/:flag" component={ProductDetails}/>
-
-                <PrivateRoute exact path="/login" >
+        
+                <NonLoggedRoute exact path="/login" >
                     <Login />
-                </PrivateRoute> 
-                <PrivateRoute exact path="/register" >
+                </NonLoggedRoute> 
+                <NonLoggedRoute exact path="/register" >
                     <UserForm />
-                </PrivateRoute>
+                </NonLoggedRoute>
                 <PrivateRoute path="/profile" >
                     <UserForm />
                 </PrivateRoute>
@@ -48,4 +47,4 @@ const Dashboard = ({currentUser}) => {
     )
 }
 
-export default WithAuthConsumer(Dashboard)
+export default Dashboard
