@@ -23,7 +23,7 @@ export const WithContainer = (type, WrappedComponent) => {
             loading: false,
             list: list
           })
-        })
+        }).catch(console.info)
 
       } else  {
         apiList[type]().then(list =>{
@@ -31,7 +31,7 @@ export const WithContainer = (type, WrappedComponent) => {
             loading: false,
             list: list 
           })
-        })
+        }).catch(console.info)
       }
 
     }
@@ -52,7 +52,7 @@ export const WithContainer = (type, WrappedComponent) => {
             ...this.state,
             list:list
           })
-        })
+        }).catch(console.info)
 
       } else if ( (PRODUCTS_KEY === type) &&
         ( ( prevPath !== currPath && currValue === 'search') 
@@ -62,7 +62,7 @@ export const WithContainer = (type, WrappedComponent) => {
             ...this.state,
             list:list
           })
-        })
+        }).catch(console.info)
 
       } else if ( this.props.match.path === '/' && prevProps.match.path !== '/' ) {
         apiList[type]().then(list => {
@@ -70,7 +70,7 @@ export const WithContainer = (type, WrappedComponent) => {
             ...this.state,
             list:list 
           })
-        })
+        }).catch(console.info)
 
       }
 
