@@ -2,9 +2,8 @@ import axios from 'axios'
 import {PRODUCTS_KEY, ORDERS_KEY, CAT_KEY, PRODUCT_NAME} from './constants'
 
 const http = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: process.env.REACT_APP_URL,
     withCredentials: true
-    
 })
 
 http.interceptors.response.use(
