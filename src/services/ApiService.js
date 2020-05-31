@@ -12,7 +12,7 @@ http.interceptors.response.use(
     if (error.response && error.response.status === 401) {
       localStorage.clear()
       window.location.assign('/login')
-    }
+    } 
     return Promise.reject(error)
   }
 )

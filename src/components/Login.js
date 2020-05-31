@@ -11,7 +11,8 @@ class Login extends React.Component {
             email: '',
             password: ''
         },
-        auth: false
+        auth: false,
+        error: false
     }
     
 
@@ -34,26 +35,35 @@ class Login extends React.Component {
                 this.setState({auth:true})
                 this.props.setUser(user)
             })
-            .catch(console.error)
+            .catch(err => {
+                this.setState(
+                    {...this.state.data,
+                     error: true
+                    })
+            })
         
     }
 
     render() {
-        const {auth, data} = this.state;
+        const {auth, data, error} = this.state;
         
         if (auth) {
             return (<Redirect to="/"/>)
         }
-        
 
         return (
             <form  action='/login' method='POST' onSubmit={this.handleSubmit}>
+                 
+                <div className="Error">
+                    {error && <span>Invalid Email or Password</span>}
+                </div>
+            
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input className="form-control" type="text" name="email" id="email" onChange={this.handleChange} value={data.email}/>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Contraseña</label>
                     <input className="form-control" type="password" name="password" id="password" onChange={this.handleChange} value={data.password}/>
                 </div>
                 <div className="form-group">
