@@ -33,9 +33,7 @@ const Dashboard = ({currentUser}) => {
                 <PrivateRoute path="/new/product" >
                     <ProductForm />
                 </PrivateRoute>
-                <PrivateRoute path="/update/product/:flag" > 
-                    <ProductForm />
-                </PrivateRoute>
+                <PrivateRoute path="/update/product/:flag" component={ProductForm} />
                 <PrivateRoute path="/cart" > 
                     <Cart />
                 </PrivateRoute>
