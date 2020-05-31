@@ -67,6 +67,7 @@ class UserForm extends React.Component {
     }
 
     componentDidMount() {
+        console.info('Props: ' + this.props)
         if (this.props.currentUser) {
             const user = this.props.currentUser
             this.setState({
