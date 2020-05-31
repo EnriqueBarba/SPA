@@ -6,7 +6,7 @@ const AuthContext = createContext();
 export class AuthContextProvider extends React.Component {
 
     state = {
-        user: localStorage.getItem('user') ? localStorage.getItem('user') : undefined
+        user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : undefined
     }
 
     setUser = (user) => {
