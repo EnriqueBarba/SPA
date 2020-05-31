@@ -19,9 +19,10 @@ export class AuthContextProvider extends React.Component {
     }
 
     render() {
-        const user = this.state.user
+        const {user} = this.state.user
+        console.log(user)
         const value = {
-            currentUser: JSON.parse(user),
+            currentUser: user,
             setUser: this.setUser,
             logout: this.logout
           }
