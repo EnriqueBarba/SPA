@@ -28,11 +28,11 @@ const Orders = ({ list=[] }) => {
                         </div>
                         <Card.Body className="">
                             <Card.Text className="text-muted">{order.createdAt}</Card.Text>
-                            <Card.Text>
-                                Precio: {order.buyingPrice}€<br />
-                                Unidades: {order.ammount}<br />
+                            <Card.Text className="txt-just">
+                                <b>Unidades:</b> {order.ammount}<br />
+                                <b>Precio:</b> {order.buyingPrice}€<br />
                             </Card.Text>
-                            <Card.Footer>
+                            <Card.Footer className="order-status">
                                 {order.payment && order.payment.paid && <>Pagado</>}    
                                 {(!order.payment || !order.payment.paid) && 
                                     <>

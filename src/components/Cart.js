@@ -21,10 +21,11 @@ const Cart = ({cart, getCart}) => {
 
     return (
         <div className='Cart container row'>
-            <h4 className="mb-2 col-12 mt-4 mb-4">Tienes {items} productos en tu cesta</h4>
+            <h4 className="mb-2 col-12 mt-4 mb-4">Productos en tu cesta:</h4>
             {(items==='0' || items===0) && 
                 <div className="col-12">
-                    <p>Ojea nuestros productos!!</p>
+                    <p>Actualmente su cesta esta vacia...</p>
+                    <p>Consulta nuestros productos!!</p>
                 </div>}
             {orders.length > 0 &&
                 <Button className="btn btn-light gold-btn function-btn mb-2 col-12" onClick={() => handleShow()}>Comprar todo</Button>

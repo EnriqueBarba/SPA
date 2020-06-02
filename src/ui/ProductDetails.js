@@ -12,7 +12,7 @@ const ProductDetails = ({name = '', images = [], description = '', price=0, ammo
 return (
   <Card className="details">
     <div className="Product item-info">
-      <Card.Title><b>{name}</b></Card.Title>
+      <Card.Title className="prod-name"><b>{name}</b></Card.Title>
       <div>
         <Image src={images[0]} alt='product' thumbnail />
         {images.length > 1 &&
@@ -28,19 +28,19 @@ return (
         }
       </div>
       <div>
-        <Card.Text className="description mt-2">
+        <Card.Text className="prod-description txt-just mt-2">
           {description}<br/>
         </Card.Text>
-        <Card.Text>
+        <Card.Text className="prod-price txt-just">
           <b>Precio:</b> {price}€<br/>
           <b>Stock:</b> {ammountLeft}<br/>
         </Card.Text>
       </div>
       {currentUser && currentUser.id === owner && <>
-        <div className="mt-4 row d-flex justify-content-center">
+        <div className="m-4 row d-flex justify-content-between">
           <div className="d-inline mr-2">
             <Link to={`/update/product/${flag}`} 
-              className='btn btn-light Success function-btn mb-2'>Editar <i className="fa fa-edit text-upd"></i></Link>
+              className='btn btn-light Success function-btn mb-2'> <i className="fa fa-edit text-upd"></i></Link>
           </div>
           <div className="d-inline ml-2">
             <DeleteProduct prodId={id} />
